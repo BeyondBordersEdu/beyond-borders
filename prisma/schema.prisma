@@ -1,0 +1,214 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  MENTOR
+  EMPLOYER
+  UNIVERSITY
+  ADMIN
+}
+
+enum PlanTier {
+  free
+  pro
+  premium
+}
+
+enum BookingService {
+  career_call
+  visa_call
+  cv_review
+}
+
+enum BookingStatus {
+  pending
+  paid
+  confirmed
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String?
+  email         String   @unique
+  emailVerified DateTime?
+  image         String?
+  role          UserRole @default(STUDENT)
+  country       String?
+  goal          String?  @default("job")
+  education     String?  @default("Undergraduate")
+  budget        String?  @default("£15k-£30k")
+  interest      String?  @default("Software Engineering")
+  timeline      String?  @default("6 months")
+  plan          PlanTier @default(free)
+  onboardingCompleted Boolean @default(false)
+  xp            Int      @default(0)
+  streakDays    Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  profiles      ProfessionalProfile?
+  applications  JobApplication[]
+  scholarships  ScholarshipApplication[]
+  bookings      Booking[]
+  notifications Notification[]
+}
+
+model ProfessionalProfile {
+  id              String   @id @default(cuid())
+  userId           String   @unique
+  headline         String?
+  bio              String?
+  portfolioUrl     String?
+  linkedinUrl      String?
+  targetCountries  String[]
+  skills           String[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model University {
+  id          String @id @default(cuid())
+  name        String
+  country     String
+  website     String?
+  description String?
+}
+
+model Employer {
+  id          String @id @default(cuid())
+  name        String
+  country     String
+  website     String?
+  visaSponsor Boolean @default(false)
+}
+
+model Scholarship {
+  id             String   @id @default(cuid())
+  title          String
+  provider       String
+  country        String
+  amount         Int?
+  deadline       DateTime?
+  eligibility    String
+  applications   ScholarshipApplication[]
+}
+
+model ScholarshipApplication {
+  id            String   @id @default(cuid())
+  userId         String
+  scholarshipId  String
+  status         String   @default("draft")
+  createdAt      DateTime @default(now())
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scholarship  Scholarship  @relation(fields: [scholarshipId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, scholarshipId])
+}
+
+model JobListing {
+  id             String   @id @default(cuid())
+  title          String
+  country        String
+  salaryMin      Int?
+  salaryMax      Int?
+  visaSponsored  Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  applications   JobApplication[]
+}
+
+model JobApplication {
+  id          String   @id @default(cuid())
+  userId       String
+  jobListingId String
+  status       String   @default("saved")
+  createdAt    DateTime @default(now())
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobListing JobListing @relation(fields: [jobListingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobListingId])
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([sessionToken])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model Booking {
+  id        String        @id @default(cuid())
+  userId    String
+  service   BookingService
+  date      String
+  time      String
+  amount    Int
+  status    BookingStatus @default(pending)
+  email     String
+  createdAt DateTime      @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  body      String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 213 36% 98%;
+  --fg: 224 37% 12%;
+  --card: 0 0% 100%;
+  --primary: 207 88% 44%;
+  --accent: 160 78% 35%;
+  --muted: 214 22% 93%;
+  --border: 214 22% 86%;
+}
+
+.dark {
+  --bg: 221 39% 8%;
+  --fg: 210 24% 96%;
+  --card: 221 35% 11%;
+  --primary: 197 95% 60%;
+  --accent: 156 78% 46%;
+  --muted: 223 23% 19%;
+  --border: 223 18% 27%;
+}
+
+* { border-color: hsl(var(--border)); }
+html, body { height: 100%; }
+body {
+  background: radial-gradient(circle at 12% 0%, rgba(59, 130, 246, 0.1), transparent 36%),
+    radial-gradient(circle at 100% 0%, rgba(45, 212, 191, 0.1), transparent 42%),
+    hsl(var(--bg));
+  color: hsl(var(--fg));
+  font-family: "SF Pro Display", "Manrope", "Avenir Next", ui-sans-serif, system-ui;
+  letter-spacing: -0.01em;
+}
+
+.container-xl { @apply mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12; }
+.card-glass { @apply rounded-3xl border border-white/20 bg-white/45 shadow-[0_12px_40px_-24px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:bg-white/5; }
+
+.type-hero { @apply text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl lg:text-7xl; }
+.type-section { @apply text-2xl font-semibold tracking-[-0.02em] sm:text-4xl; }
+.type-body { @apply text-base leading-7 text-slate-600 dark:text-slate-300; }
+.type-caption { @apply text-xs font-medium uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400; }
+
+.space-8 { @apply mt-2; }
+.space-16 { @apply mt-4; }
+.space-24 { @apply mt-6; }
+.space-32 { @apply mt-8; }
+.space-48 { @apply mt-12; }
+.space-64 { @apply mt-16; }

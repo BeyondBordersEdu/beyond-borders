@@ -1,0 +1,211 @@
+{
+  "profiles": [
+    {
+      "userId": "demo-user",
+      "name": "Demo User",
+      "email": "demo@beyondborders.ai",
+      "country": "United Kingdom",
+      "goal": "job",
+      "education": "Undergraduate",
+      "budget": "£15k-£30k",
+      "interest": "Software Engineering",
+      "timeline": "6 months",
+      "plan": "free",
+      "onboardingCompleted": false
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-1",
+      "title": "Graduate Software Engineer",
+      "country": "United Kingdom",
+      "salary": "£45k-£60k",
+      "visaSponsored": true,
+      "employer": "Northstar Labs",
+      "tags": [
+        "React",
+        "Node",
+        "AI"
+      ],
+      "description": "Build global career platform products."
+    },
+    {
+      "id": "job-2",
+      "title": "Data Analyst",
+      "country": "Canada",
+      "salary": "CA$62k-80k",
+      "visaSponsored": true,
+      "employer": "MapleWorks",
+      "tags": [
+        "SQL",
+        "BI",
+        "Python"
+      ],
+      "description": "Drive analytics for student mobility products."
+    }
+  ],
+  "scholarships": [
+    {
+      "id": "sch-1",
+      "title": "Global Talent Scholarship",
+      "country": "United Kingdom",
+      "amount": "£12,000",
+      "deadline": "2026-07-01",
+      "tags": [
+        "STEM",
+        "Merit"
+      ],
+      "description": "Support for high-performing international students."
+    },
+    {
+      "id": "sch-2",
+      "title": "Maple Future Grant",
+      "country": "Canada",
+      "amount": "CA$15,000",
+      "deadline": "2026-08-15",
+      "tags": [
+        "Business",
+        "Leadership"
+      ],
+      "description": "Grant for future business leaders."
+    }
+  ],
+  "mentors": [
+    {
+      "id": "men-1",
+      "name": "A. Thompson",
+      "field": "Product",
+      "rating": 4.9,
+      "sessions": 320,
+      "country": "United Kingdom"
+    },
+    {
+      "id": "men-2",
+      "name": "R. Iqbal",
+      "field": "Data",
+      "rating": 4.8,
+      "sessions": 280,
+      "country": "Canada"
+    }
+  ],
+  "posts": [
+    {
+      "id": "post-1",
+      "userId": "demo-user",
+      "author": "Demo User",
+      "country": "United Kingdom",
+      "channel": "Jobs",
+      "title": "Best way to optimize visa-sponsored applications?",
+      "body": "I am applying to UK graduate roles. What conversion tactics worked for you?",
+      "likes": 12,
+      "comments": [
+        {
+          "id": "c-1",
+          "author": "Mentor Mia",
+          "body": "Tailor CV for each JD and quantify impact."
+        }
+      ],
+      "createdAt": "2026-05-20T12:00:00.000Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "4ea7de71-8a21-4296-a0db-a7de7ccb12c8",
+      "userId": "demo-user",
+      "type": "job",
+      "targetId": "job-1",
+      "status": "applied",
+      "createdAt": "2026-05-22T01:17:39.641Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "32ad173d-8de2-498b-8bfc-09fc7aa4c855",
+      "userId": "demo-user",
+      "status": "pending",
+      "createdAt": "2026-05-22T01:07:12.389Z",
+      "service": "career_call",
+      "date": "2026-09-08",
+      "time": "10:30",
+      "email": "rshssns@hssms.com",
+      "amount": 4900
+    }
+  ],
+  "enquiries": [],
+  "notifications": [
+    {
+      "id": "n-1",
+      "userId": "demo-user",
+      "type": "job",
+      "title": "New visa-sponsored role match",
+      "body": "A new Graduate Software Engineer job in UK matches your profile.",
+      "createdAt": "2026-05-22T09:00:00.000Z",
+      "read": false
+    },
+    {
+      "id": "n-2",
+      "userId": "demo-user",
+      "type": "scholarship",
+      "title": "Scholarship deadline alert",
+      "body": "Global Talent Scholarship closes in 10 days.",
+      "createdAt": "2026-05-22T10:00:00.000Z",
+      "read": false
+    }
+  ],
+  "mentorSessions": [],
+  "mentorReviews": [
+    {
+      "id": "mr-1",
+      "mentorId": "men-1",
+      "userId": "demo-user",
+      "rating": 5,
+      "comment": "Very practical roadmap for UK tech hiring.",
+      "createdAt": "2026-05-15T09:00:00.000Z"
+    }
+  ],
+  "communityReports": [],
+  "podcastEpisodes": [
+    {
+      "id": "pod-1",
+      "title": "From Pune to Toronto: Student to Analyst",
+      "category": "study_abroad",
+      "mediaType": "audio",
+      "mediaUrl": "https://example.com/audio/pune-toronto.mp3",
+      "author": "Beyond Stories",
+      "likes": 18,
+      "comments": [],
+      "createdAt": "2026-05-21T12:00:00.000Z"
+    }
+  ],
+  "chatRooms": [
+    {
+      "id": "room-1",
+      "slug": "ielts",
+      "title": "IELTS Prep",
+      "description": "Focused speaking, reading, and writing prep."
+    },
+    {
+      "id": "room-2",
+      "slug": "visa-help",
+      "title": "Visa Help",
+      "description": "Documentation checklists and pathway advice."
+    },
+    {
+      "id": "room-3",
+      "slug": "jobs",
+      "title": "Jobs Room",
+      "description": "Sponsored jobs, CV tactics, and interview prep."
+    }
+  ],
+  "chatMessages": [
+    {
+      "id": "msg-1",
+      "roomId": "room-1",
+      "userId": "demo-user",
+      "author": "Demo User",
+      "body": "Any strategy for IELTS writing task 2 structure?",
+      "flagged": false,
+      "createdAt": "2026-05-22T08:00:00.000Z"
+    }
+  ]
+}
