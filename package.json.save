@@ -1,8 +1,18 @@
 {
   "name": "beyond-borders",
-  cd ~/Documents/"Beyond Borders"
-
-git add ."version": "1.0.0",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
+  },{
+  "name": "beyond-borders",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -48,10 +58,12 @@ git add ."version": "1.0.0",
   }
 }
 
-
 cd ~/Documents/"Beyond Borders"
-cd ~/Documents/"Beyond Borders"cd ~/Documents/"Beyond Borders"
-Ctrl + X
-x
-
+git add package.json
+git commit -m "fix prisma build"
+git push
+s
+y
+X
+^X
 
